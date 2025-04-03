@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>김예지 바보</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      function goToLink() {
+        const number = document.getElementById('numberInput').value.trim();
+        if (number) {
+          const url = `https://eiass.go.kr/common/file/downloadPdfByFileSeq.do?FILE_SEQ=${number}&SYSTEM_NAME=&FILE_NM=`;
+          window.location.href = url;
+        } else {
+          alert('숫자를 입력하세요.');
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        document
+          .getElementById('numberInput')
+          .addEventListener('keypress', function (event) {
+            if (event.key === 'Enter') {
+              goToLink();
+            }
+          });
+      });
+    </script>
+  </head>
+  <body class="flex items-center justify-center h-screen bg-gray-100">
+    <div class="bg-white p-8 rounded-lg shadow-md w-96 text-center">
+      <input
+        type="number"
+        id="numberInput"
+        class="w-full p-3 border rounded-md text-lg outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="숫자를 입력하세요"
+      />
+      <button
+        onclick="goToLink()"
+        class="mt-4 w-full bg-blue-500 text-white py-3 rounded-md text-lg font-semibold hover:bg-blue-600 transition"
+      >
+        이동하기
+      </button>
+    </div>
+  </body>
+</html>
